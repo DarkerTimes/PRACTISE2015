@@ -1,5 +1,5 @@
 all:
-	g++ -c task1.cpp 
-	g++ -o task1 task1.o
-	g++ -c task2.cpp 
-	g++ -o task2 task2.o
+	g++ -c t1.cpp 
+	g++ -o t1 t1.o
+	g++ -c t2.cpp 
+	g++ -o t2 t2.o
