@@ -10,7 +10,6 @@ class image{
 private:
 	int **matrix;
 	int x,y;
-//first coord - y, then x
 
 public:
 	image(int x, int y, int **mat){
@@ -94,7 +93,6 @@ public:
 
 			for(int j=0;j<this->x;j++){
 				
-				//cout<<"point "<<j<<" "<<i<<endl;
 				p1.clear();
 				for(int i1=0;i1<=r;i1++)
 					for(int j1=0;j1<=r;j1++){
@@ -102,7 +100,6 @@ public:
 							
 							if((this->rad_prov(j,i,j-j1,i-i1,r))&&(this->matrix[i-i1][j-j1]==1)){
 								
-								//cout<<"		neg: "<<j-j1<<" "<<i-i1<<endl;
 								t=new int[2];
 								t[0]=j-j1;
 								t[1]=i-i1;
@@ -116,7 +113,6 @@ public:
 						if((j+j1<this->x)&&(i+i1<this->y)){
 							if((this->rad_prov(j,i,j+j1,i+i1,r))&&(this->matrix[i+i1][j+j1]==1)){
 								
-								//cout<<"		pos: "<<j+j1<<" "<<i+i1<<endl;
 								t=new int[2];
 								t[0]=j+j1;
 								t[1]=i+i1;
@@ -203,34 +199,3 @@ int* get_size(vector <int*> p){
 }
 
 
-int main(int argc, char *argv[]){
-char fn[]="to4ki";
-int r=4; //radius
-
-vector<int*> p;
-vector<int*> obj;
-int *s=new int[2];
-
-
-p=read_coords(fn);
-s=get_size(p);
-
-image *i1=new image(s[0]+1,s[1]+1);
-
-i1->set_points(p);
-
-cout<<"Радиус: "<<r<<endl;
-
-obj=i1->get_obj(r);
-cout<<"Точки объекта:"<<endl;
-for(int i=0;i<obj.size();i++)
-	cout<<"x= "<<obj[i][0]<<" y= "<<obj[i][1]<<endl;
-
-cout<<"Центр масс:"<<endl;
-
-s=get_mass_centr(obj);
-
-cout<<"x= "<<s[0]<<" y= "<<s[1]<<endl;
-
-	return 0;
-}
