@@ -198,4 +198,35 @@ int* get_size(vector <int*> p){
 	return s;
 }
 
+int main(int argc, char *argv[]){
+	char fn[]="to4ki";
+	int r=4; //radius
+
+	vector<int*> p;
+	vector<int*> obj;
+	int *s=new int[2];
+
+
+	p=read_coords(fn);
+	s=get_size(p);
+
+	image *i1=new image(s[0]+1,s[1]+1);
+
+	i1->set_points(p);
+
+	cout<<"Радиус: "<<r<<endl;
+
+	obj=i1->get_obj(r);
+	cout<<"Точки объекта:"<<endl;
+		for(int i=0;i<obj.size();i++)
+			cout<<"x= "<<obj[i][0]<<" y= "<<obj[i][1]<<endl;
+
+	cout<<"Центр масс:"<<endl;
+
+	s=get_mass_centr(obj);
+
+	cout<<"x= "<<s[0]<<" y= "<<s[1]<<endl;
+
+	return 0;
+}
 
